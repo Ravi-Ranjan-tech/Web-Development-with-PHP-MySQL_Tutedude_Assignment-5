@@ -3,63 +3,215 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mastering Form Validation</title>
+  <title>Assignment 5</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <h1>Mastering Form Validation</h1>
-      <p class="hero-sub">Building robust user input checks with modern JavaScript</p>
-    </div>
+  <header class="site-header" role="banner">
+    <nav class="navbar py-3">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo d-flex align-items-center" aria-label="Site logo">
+        <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\demo-logo.png" alt="Logo">
+        </div>
+
+        <ul class="nav main-nav">
+          <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="#what">SERVICES</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">ABOUT US</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">TESTIMONIALS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
-  <main class="page">
-    <section class="card" aria-labelledby="form-title">
-      <header class="card-header">
-        <h2 id="form-title">Sign up</h2>
-        <p class="muted">A simple form validation example — required fields and feedback</p>
-      </header>
+  <main>
+    <section class="hero-section hero-variant-1">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-left">
+            <h1 class="hero-title">BEST DIGITAL AGENCY</h1>
+            <p class="hero-desc"><span class="hero-highlight">Subscribe Easy Tutorials YouTube channel to watch more videos on website development, digital marketing, WordPress and graphics designing.</span></p>
 
-      <div id="result" role="status" aria-live="polite"></div>
-
-      <form id="signup-form" novalidate>
-        <div class="field">
-          <label for="name">Full Name</label>
-          <input id="name" name="name" type="text" required autocomplete="name">
-          <div class="error" id="name-error" aria-live="polite"></div>
-        </div>
-
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required autocomplete="email">
-          <div class="error" id="email-error" aria-live="polite"></div>
-        </div>
-
-        <div class="field">
-          <label for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="10" pattern="\d{10}" title="Enter 10 digit phone number" required autocomplete="tel">
-          <div class="error" id="phone-error" aria-live="polite"></div>
-        </div>
-
-        <div class="field">
-          <label for="password">Password</label>
-          <div class="password-wrap">
-            <input id="password" name="password" type="password" required minlength="8" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}" title="At least 8 chars, include upper, lower and a number" autocomplete="new-password">
-            <button type="button" id="toggle-pass" aria-label="Show password">Show</button>
+            <div class="play-row">
+              <a class="play-cta" href="#" aria-label="Watch tutorial">
+                <span class="play-circle" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7-11-7z" fill="#fff"/></svg>
+                </span>
+                <span class="play-label">Watch Tutorial</span>
+              </a>
+            </div>
           </div>
-          <div class="error" id="password-error" aria-live="polite"></div>
+
+          <div class="hero-right" aria-hidden="true">
+            <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\home2.png" alt="illustration" class="hero-illustration">
+          </div>
         </div>
 
-        <div class="actions">
-          <button type="submit" id="submit-btn">Create account</button>
-        </div>
-      </form>
+        <!-- decorative wave image (use provided PNG) -->
+        <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\wave1.png" alt="" class="hero-wave-img" aria-hidden="true">
+      </div>
     </section>
+
+    <section id="what" class="py-5 what-we-do">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-title">WHAT WE DO ?</h2>
+          <div class="underline" aria-hidden="true"></div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="service-card p-4 h-100 reveal">
+              <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\service1.png" alt="icon" class="service-icon">
+              <h3 class="h6 mt-3">GROWTH MARKETING</h3>
+              <p class="text-muted small">Subscribe Easy Tutorials YouTube channel to watch more videos on website development, digital marketing, WordPress and graphics designing.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="service-card p-4 h-100 reveal">
+              <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\service2.png" alt="icon" class="service-icon">
+              <h3 class="h6 mt-3">ONLINE BRANDING</h3>
+              <p class="text-muted small">Subscribe Easy Tutorials YouTube channel to watch more videos on website development, digital marketing, WordPress and graphics designing.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="service-card p-4 h-100 reveal">
+              <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\service3.png" alt="icon" class="service-icon">
+              <h3 class="h6 mt-3">ANIMATED ADS</h3>
+              <p class="text-muted small">Subscribe Easy Tutorials YouTube channel to watch more videos on website development, digital marketing, WordPress and graphics designing.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <a class="btn btn-purple" href="#" role="button">All Services</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="py-5 why-section">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-title">WHY CHOOSE US ?</h2>
+          <div class="underline" aria-hidden="true"></div>
+        </div>
+
+        <div class="row align-items-center g-4 reveal">
+          <div class="col-md-6 why-left">
+            <h3 class="h4">Why we're different</h3>
+            <ul class="why-list">
+              <li>Understand our client's business goal first</li>
+              <li>Believe in doing business with honesty</li>
+              <li>We deliver on time</li>
+              <li>We create a winning content strategy</li>
+              <li>We protect your online reputation</li>
+              <li>We create a winning content strategy</li>
+              <li>We protect your online reputation</li>
+            </ul>
+          </div>
+          <div class="col-md-6 why-right text-center reveal">
+            <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\network.png" alt="why illustration" class="why-illustration">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="py-5 testimonials-section">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="section-title">WHAT CLIENTS SAY</h2>
+          <div class="underline" aria-hidden="true"></div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <article class="testimonial-card p-4 reveal">
+              <div class="testimonial-body">
+                <p class="mb-3">Subscribe Easy Tutorials YouTube channel to watch more videos on website development, digital marketing, WordPress and graphics designing.</p>
+              </div>
+              <div class="d-flex align-items-center gap-3 mt-3">
+                <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\user1.jpg" alt="Angelina" class="avatar">
+                <div>
+                  <div class="fw-bold">Angelina</div>
+                  <div class="text-muted small">Co-founder at xyz</div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6">
+            <article class="testimonial-card p-4 reveal">
+              <div class="testimonial-body">
+                <p class="mb-3">Subscribe Easy Tutorials YouTube channel to watch more videos on website development, digital marketing, WordPress and graphics designing.</p>
+              </div>
+              <div class="d-flex align-items-center gap-3 mt-3">
+                <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\user2.jpg" alt="John Doe" class="avatar">
+                <div>
+                  <div class="fw-bold">John Doe</div>
+                  <div class="text-muted small">Director at xyz</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
   </main>
 
-  <footer class="site-foot">© <span id="year"></span> Form Validation Demo</footer>
+  <section class="social-section py-5 text-center">
+    <div class="container">
+      <h3 class="mb-3">FIND US ON SOCIAL MEDIA</h3>
+      <div class="social-icons d-flex justify-content-center gap-3 mt-3">
+        <a class="social" href="#" aria-label="Facebook"><img src="images/facebook-icon.png" alt="Facebook logo"></a>
+        <a class="social" href="#" aria-label="Instagram"><img src="images/instagram-icon.png" alt="Instagram logo"></a>
+        <a class="social" href="#" aria-label="Twitter"><img src="images/twitter-icon.png" alt="Twitter logo"></a>
+        <a class="social" href="#" aria-label="WhatsApp"><img src="images/whatsapp-icon.png" alt="WhatsApp logo"></a>
+        <a class="social" href="#" aria-label="LinkedIn"><img src="images/linkedin-icon.png" alt="LinkedIn logo"></a>
+        <a class="social" href="#" aria-label="Snapchat"><img src="images/snapchat-icon.png" alt="Snapchat logo"></a>
+      </div>
+    </div>
+  </section>
 
+  <footer class="site-footer footer-wave">
+    <img src="file:///F:/.vscode/Tutedude/Web_Development/Assignment5/images/wave2.png" alt="Decorative purple wave" class="footer-wave-img" aria-hidden="true">
+
+    <div class="footer-content" role="contentinfo">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-md-4 footer-col">
+            <div class="logo d-flex gap-2 mb-3" aria-hidden="true">
+              <img src="F:\.vscode\Tutedude\Web_Development\Assignment5\images\demo-logo.png" alt="Logo">
+            </div>
+            <p class="footer-desc">Subscribe Easy Tutorials YouTube channel to watch more videos on website development, digital marketing, WordPress graphics designing and press the bell icon to get notified.</p>
+          </div>
+
+          <div class="col-md-4 footer-col contact-col">
+            <h4 class="mb-3">CONTACT US</h4>
+            <p class="contact-item mb-1"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg><span><strong>Location:</strong> World Trade Centre, Bangalore</span></p>
+            <p class="contact-item mb-1"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C7.61 21 3 16.39 3 10a1 1 0 011-1h2.5a1 1 0 01.62.79z"/></svg><span><strong>Phone:</strong> +1 0123456789</span></p>
+            <p class="contact-item mb-0"><svg class="contact-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span><strong>Email:</strong> xyz@gmail.com</span></p>
+          </div>
+
+          <div class="col-md-4 footer-col">
+            <h4 class="mb-3">GET IN TOUCH</h4>
+            <form id="subscribe-form" class="d-flex gap-2" aria-label="Subscribe form">
+              <input id="subscribe-email" type="email" placeholder="Your email" class="form-control" required>
+              <button class="btn btn-subscribe" type="submit">Subscribe</button>
+            </form>
+            <div id="subscribe-msg" role="status" aria-live="polite" class="mt-2"></div>
+          </div>
+        </div>
+
+        <div class="footer-bottom text-center mt-4 text-white-50">© <span id="year"></span> OmniApp. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
