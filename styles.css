@@ -1,0 +1,46 @@
+/* Rebuilt design to match the Canva layout: hero + centered card */
+:root{
+  --bg-1: #eef2ff;
+  --bg-2: #fff;
+  --accent: #3b82f6;
+  --muted: #6b7280;
+  --error: #ef4444;
+  --success: #16a34a;
+  --radius: 14px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;background:linear-gradient(180deg,var(--bg-1) 0%, #f9fafb 40%);display:flex;flex-direction:column;align-items:center}
+
+/* Hero area */
+.hero{width:100%;padding:28px 12px;background:linear-gradient(90deg,#eef2ff 0%, #fef3c7 100%);border-bottom:1px solid rgba(0,0,0,0.03)}
+.hero-inner{max-width:900px;margin:0 auto;text-align:center}
+.hero h1{margin:0;font-size:1.6rem;color:#0f172a}
+.hero-sub{margin:6px 0 0;color:var(--muted)}
+
+/* Page + Card */
+.page{width:100%;max-width:900px;padding:28px 12px}
+.card{background:var(--bg-2);border-radius:var(--radius);padding:26px;border:1px solid #eceff6;max-width:600px;margin:18px auto}
+.card-header{margin-bottom:14px;text-align:center}
+#form-title{margin:0;font-size:1.25rem;font-weight:700;color:#0f172a}
+.muted{margin:6px 0 0;color:var(--muted)}
+
+form{display:grid;gap:12px}
+.field{display:flex;flex-direction:column}
+label{font-size:.94rem;color:#111827;margin-bottom:8px}
+input[type="text"],input[type="email"],input[type="tel"],input[type="password"]{padding:12px;border:1px solid #dfe6f1;border-radius:10px;font-size:.97rem}
+.password-wrap{display:flex;gap:10px}
+#toggle-pass{background:#f3f4f6;border:1px solid #e6e9ef;padding:0 10px;border-radius:8px;cursor:pointer}
+.error{color:var(--error);font-size:.9rem;margin-top:8px;min-height:1.2em}
+.actions{display:flex;justify-content:center;margin-top:6px}
+#submit-btn{background:var(--accent);color:white;border:none;padding:10px 18px;border-radius:10px;cursor:pointer}
+
+/* Result box for summary */
+#result{margin-top:12px;padding:10px;border-radius:10px;font-weight:600;text-align:center}
+#result.success{background:rgba(22,163,74,0.08);color:var(--success);border:1px solid rgba(22,163,74,0.12)}
+#result.error{background:rgba(239,68,68,0.06);color:var(--error);border:1px solid rgba(239,68,68,0.12)}
+
+.site-foot{text-align:center;color:var(--muted);font-size:.85rem;margin:18px 0}
+
+@media (max-width:520px){.card{padding:18px}.hero h1{font-size:1.2rem}}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mastering Form Validation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Mastering Form Validation</h1>
+      <p class="hero-sub">Building robust user input checks with modern JavaScript</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="card" aria-labelledby="form-title">
+      <header class="card-header">
+        <h2 id="form-title">Sign up</h2>
+        <p class="muted">A simple form validation example — required fields and feedback</p>
+      </header>
+
+      <div id="result" role="status" aria-live="polite"></div>
+
+      <form id="signup-form" novalidate>
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+          <div class="error" id="name-error" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+          <div class="error" id="email-error" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="10" pattern="\d{10}" title="Enter 10 digit phone number" required autocomplete="tel">
+          <div class="error" id="phone-error" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" name="password" type="password" required minlength="8" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}" title="At least 8 chars, include upper, lower and a number" autocomplete="new-password">
+            <button type="button" id="toggle-pass" aria-label="Show password">Show</button>
+          </div>
+          <div class="error" id="password-error" aria-live="polite"></div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="submit-btn">Create account</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-foot">© <span id="year"></span> Form Validation Demo</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
