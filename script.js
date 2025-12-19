@@ -1,87 +1,84 @@
-// Assignment5 rebuilt: validation + show/hide password + accessible messages
-const form = document.getElementById('signup-form');
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const phoneInput = document.getElementById('phone');
-const passInput = document.getElementById('password');
-const togglePass = document.getElementById('toggle-pass');
-const resultBox = document.getElementById('result');
-const yearSpan = document.getElementById('year');
+// Assignment5 landing page script
+document.addEventListener('DOMContentLoaded', function(){
+  // navbar toggler (accessible)
+  const toggler = document.querySelector('.navbar-toggler');
+  const collapse = document.getElementById('mainNav');
+  if (toggler && collapse){
+    toggler.addEventListener('click', ()=>{
+      const expanded = toggler.getAttribute('aria-expanded') === 'true';
+      toggler.setAttribute('aria-expanded', String(!expanded));
+      collapse.classList.toggle('show');
+    });
+  }
 
-// set current year in footer
-if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-function setError(el, msg){
-  const box = document.getElementById(el.id + '-error');
-  if (box) box.textContent = msg || '';
-  el.setAttribute('aria-invalid', !!msg);
-}
-
-function clearAllErrors(){
-  ['name','email','phone','password'].forEach(id=>{
-    const box = document.getElementById(id + '-error');
-    if (box) box.textContent = '';
-    const el = document.getElementById(id);
-    if (el) el.removeAttribute('aria-invalid');
+  // smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      const target = this.getAttribute('href');
+      if (target === '#') return;
+      const el = document.querySelector(target);
+      if (el){
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+        // move focus for accessibility
+        el.setAttribute('tabindex','-1');
+        el.focus({preventScroll:true});
+        setTimeout(()=>el.removeAttribute('tabindex'),1000);
+      }
+    });
   });
-  resultBox.className = '';
-  resultBox.textContent = '';
-}
 
-function isEmailValid(email){
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+  // set current year
+  const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
 
-function isPhoneValid(phone){
-  return /^\d{10}$/.test(phone);
-}
+  // reveal animation for service cards
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12});
 
-function isStrongPassword(p){
-  return /[A-Z]/.test(p) && /[a-z]/.test(p) && /\d/.test(p) && p.length >= 8;
-}
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// toggle password visibility
-if (togglePass) togglePass.addEventListener('click', ()=>{
-  if (passInput.type === 'password'){
-    passInput.type = 'text';
-    togglePass.textContent = 'Hide';
-    togglePass.setAttribute('aria-label','Hide password');
-  } else {
-    passInput.type = 'password';
-    togglePass.textContent = 'Show';
-    togglePass.setAttribute('aria-label','Show password');
+  // animate underline when the title appears (observe all section titles)
+  const titles = document.querySelectorAll('.section-title');
+  if (titles.length){
+    const tObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          const titleEl = e.target;
+          const underline = titleEl.nextElementSibling;
+          if (underline && underline.classList.contains('underline')) underline.classList.add('underline-active');
+          tObs.unobserve(titleEl);
+        }
+      });
+    }, {threshold: 0.2});
+    titles.forEach(t => tObs.observe(t));
+  }
+
+  // subscribe form handler
+  const subscribeForm = document.getElementById('subscribe-form');
+  if (subscribeForm){
+    subscribeForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const emailInput = document.getElementById('subscribe-email');
+      const msg = document.getElementById('subscribe-msg');
+      const email = emailInput.value.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!valid){
+        msg.textContent = 'Please enter a valid email address.';
+        msg.style.color = '#ffdddd';
+        emailInput.focus();
+        return;
+      }
+      // simulated subscribe success
+      msg.textContent = 'Thanks! You are subscribed.';
+      msg.style.color = '#dff8e1';
+      subscribeForm.reset();
+    });
   }
 });
 
-form.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  clearAllErrors();
-  let ok = true;
-
-  if (!nameInput.value.trim()){ setError(nameInput,'Name is required'); ok = false; }
-
-  if (!emailInput.value.trim()){ setError(emailInput,'Email is required'); ok = false; }
-  else if (!isEmailValid(emailInput.value.trim())){ setError(emailInput,'Email format is invalid'); ok = false; }
-
-  const digits = phoneInput.value.replace(/\D/g,'');
-  if (!digits){ setError(phoneInput,'Phone is required'); ok = false; }
-  else if (!isPhoneValid(digits)){ setError(phoneInput,'Phone must be 10 digits'); ok = false; }
-
-  if (!passInput.value){ setError(passInput,'Password is required'); ok = false; }
-  else if (!isStrongPassword(passInput.value)){ setError(passInput,'Password must be 8+ chars and include upper, lower, number'); ok = false; }
-
-  if (!ok){
-    resultBox.className = 'error';
-    resultBox.textContent = 'Please fix the highlighted errors.';
-    const firstErr = document.querySelector('.error:not(:empty)');
-    if (firstErr){
-      const ctrl = firstErr.previousElementSibling || firstErr.parentElement.querySelector('input');
-      if (ctrl && typeof ctrl.focus === 'function') ctrl.focus();
-    }
-    return;
-  }
-
-  resultBox.className = 'success';
-  resultBox.textContent = 'Form submitted successfully!';
-  form.reset();
-});
